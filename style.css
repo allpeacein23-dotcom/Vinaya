@@ -1,26 +1,25 @@
 /* style.css */
 :root {
     --primary-color: #455a64;
-    --accent-color: #607d8b;
     --bg-color: #eceff1;
-    --text-main: #263238;
     --card-bg: #ffffff;
+    --accent-blue: #0288d1;
+    --accent-orange: #f57c00;
 }
 
 body {
-    font-family: 'Pyidaungsu', -apple-system, sans-serif;
+    font-family: 'Pyidaungsu', sans-serif;
     margin: 0;
     padding-bottom: 80px;
     background-color: var(--bg-color);
 }
 
-/* Header ကို အဝိုင်းဆန်ဆန် ပြင်ထားသည် */
 header {
     padding: 10px;
-    background-color: var(--bg-color);
     position: sticky;
     top: 0;
     z-index: 1000;
+    background-color: var(--bg-color);
 }
 
 .top-bar {
@@ -30,32 +29,29 @@ header {
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 15px; /* အနားလုံးစေရန် */
+    border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* Category Sub-Header (ပါရာဇိက စသည်) */
 .category-header {
     background-color: #cfd8dc;
     color: var(--primary-color);
-    padding: 10px 20px;
+    padding: 10px;
     margin: 20px 10px 10px 10px;
-    border-radius: 25px; /* ဆေးတောင့်ပုံစံ အဝိုင်း */
+    border-radius: 25px;
     font-weight: bold;
     font-size: 0.9rem;
     text-align: center;
-    border: 1px solid #b0bec5;
 }
 
-/* Clickable Cards */
 .card {
     background: var(--card-bg);
     margin: 12px;
     padding: 18px;
-    border-radius: 15px; /* Card အနားလုံး */
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     border: 1px solid #e0e0e0;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .card-header {
@@ -71,16 +67,31 @@ header {
     color: var(--primary-color);
 }
 
+/* Expandable Content Area */
 .card-details {
     display: none;
     padding-top: 15px;
+    font-size: 0.95rem;
 }
 
-.card-details p {
-    margin: 0;
-    line-height: 1.7;
-    color: #546e7a;
-    font-size: 0.95rem;
+.data-row {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.label {
+    font-weight: bold;
+    color: var(--accent-blue);
+    display: block;
+    font-size: 0.85rem;
+}
+
+.exception-box {
+    background-color: #fff3e0;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-orange);
+    margin-top: 5px;
 }
 
 .arrow-icon {
@@ -88,7 +99,6 @@ header {
     transition: 0.3s;
 }
 
-/* Bottom Nav */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -109,4 +119,3 @@ header {
     font-size: 0.75rem;
 }
 
-.nav-item i { font-size: 1.4rem; margin-bottom: 4px; }
