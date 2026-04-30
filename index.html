@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ဝိနည်းတော်များ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div id="main-header" class="top-bar">ဝိနည်းတော်များ</div>
+    </header>
+
+    <main id="content-area">
+        </main>
+
+    <nav class="bottom-nav">
+        <a href="javascript:void(0)" onclick="loadCategory('bhikkhu')" class="nav-item">
+            <i class="fas fa-dharmachakra"></i>
+            <span>ဘိက္ခု</span>
+        </a>
+        <a href="javascript:void(0)" onclick="loadCategory('bhikkhuni')" class="nav-item">
+            <i class="fas fa-praying-hands"></i>
+            <span>ဘိက္ခုနီ</span>
+        </a>
+        <a href="javascript:void(0)" onclick="renderArpat()" class="nav-item">
+            <i class="fas fa-book-open"></i>
+            <span>အာပတ်ဖြေ</span>
+        </a>
+        <a href="javascript:void(0)" onclick="renderInfo()" class="nav-item">
+            <i class="fas fa-info-circle"></i>
+            <span>Info</span>
+        </a>
+    </nav>
+
+    <script src="arpat.js"></script>
+    <script src="info.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
