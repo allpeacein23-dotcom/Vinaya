@@ -1,57 +1,71 @@
 /* style.css */
 :root {
-    --primary-color: #455a64;
-    --bg-color: #eceff1;
+    --primary-color: #673ab7;    /* ခရမ်းရောင် (Primary) - ပိုပြီး Modern ဖြစ်သည် */
+    --primary-light: #f3e5f5;   /* ခရမ်းဖျော့ (Highlight အတွက်) */
+    --bg-color: #f8f9fa;       /* နောက်ခံ အဖြူရောင်ဘက်သွားသော မီးခိုးဖျော့ */
     --card-bg: #ffffff;
-    --accent-blue: #0288d1;
-    --accent-orange: #f57c00;
+    --text-main: #2d3436;      /* စာသားအတွက် အမည်းရောင်ရင့်ရင့် */
+    --text-sub: #636e72;       /* စာသားအညိုရောင်/မီးခိုးရောင် */
+    --divider: #dfe6e9;        /* ခွဲခြားမျဉ်းများအတွက် */
+    --accent-blue: #0984e3;
+    --accent-orange: #e67e22;
 }
 
 body {
     font-family: 'Pyidaungsu', sans-serif;
     margin: 0;
-    padding-bottom: 80px;
+    padding-bottom: 90px; /* Nav bar အတွက် နေရာပိုချန်ထားသည် */
     background-color: var(--bg-color);
+    color: var(--text-main);
 }
 
+/* Header ကို ပိုရှင်းပြီး သပ်ရပ်အောင် ပြင်ဆင်ခြင်း */
 header {
-    padding: 10px;
+    background-color: #ffffff;
+    padding: 12px 16px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--divider);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .top-bar {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.category-header {
-    background-color: #cfd8dc;
     color: var(--primary-color);
-    padding: 10px;
-    margin: 20px 10px 10px 10px;
-    border-radius: 25px;
+    font-size: 1.15rem;
     font-weight: bold;
-    font-size: 0.9rem;
-    text-align: center;
+    letter-spacing: 0.5px;
 }
 
+/* Category Header ကို အရောင်အရမ်းမရင့်ဘဲ မျက်စိအေးအောင် ပြင်ခြင်း */
+.category-header {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    margin: 20px 15px 10px 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-align: left; /* ဘယ်ဘက်ကပ်ထားတာ ပိုကြည့်ကောင်းသည် */
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Card View ကို ပိုမို Soft ဖြစ်အောင် shadow လျှော့ပြီး border ထည့်ခြင်း */
 .card {
     background: var(--card-bg);
-    margin: 12px;
-    padding: 18px;
-    border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border: 1px solid #e0e0e0;
-    transition: 0.3s;
+    margin: 10px 15px;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border: 1px solid var(--divider);
+    transition: all 0.3s ease;
+}
+
+.card:active {
+    background-color: #fafafa;
+    transform: scale(0.98);
 }
 
 .card-header {
@@ -63,43 +77,52 @@ header {
 
 .card-header h3 {
     margin: 0;
-    font-size: 1.05rem;
-    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-main);
+    line-height: 1.4;
 }
 
 /* Expandable Content Area */
 .card-details {
     display: none;
     padding-top: 15px;
-    font-size: 0.95rem;
+    margin-top: 12px;
+    font-size: 0.92rem;
+    border-top: 1px solid var(--divider);
 }
 
 .data-row {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     line-height: 1.6;
 }
 
 .label {
     font-weight: bold;
-    color: var(--accent-blue);
+    color: var(--primary-color); /* Blue အစား Primary ခရမ်းရောင် သုံးခြင်း */
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+    text-transform: uppercase;
 }
 
 .exception-box {
-    background-color: #fff3e0;
-    padding: 10px;
+    background-color: #fff9f1;
+    padding: 12px;
     border-radius: 8px;
-    border-left: 4px solid var(--accent-orange);
-    margin-top: 5px;
+    border-left: 3px solid var(--accent-orange);
+    margin-top: 8px;
+    color: #d35400;
+    font-size: 0.9rem;
 }
 
 .arrow-icon {
-    color: #90a4ae;
+    color: #b2bec3;
+    font-size: 0.8rem;
     transition: 0.3s;
 }
 
-/* Bottom Navigation (ပိုကြီးပြီး နှိပ်ရလွယ်ကူအောင် ပြင်ထားသည်) */
+/* Bottom Navigation ကို Standard App UI ပုံစံ ပြင်ဆင်ခြင်း */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -107,39 +130,40 @@ header {
     background: #ffffff;
     display: flex;
     justify-content: space-around;
-    padding: 15px 0; /* အပေါ်အောက် အကွာအဝေး ပိုချဲ့ထားသည် */
-    border-top: 1px solid #cfd8dc;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding: 8px 0 12px 0;
+    border-top: 1px solid var(--divider);
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.03);
     z-index: 2000;
 }
 
 .nav-item {
     text-decoration: none;
-    color: #90a4ae;
+    color: #b2bec3; /* Active မဖြစ်ခင် မီးခိုးရောင် */
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 25%; /* နေရာအပြည့်ယူရန် */
+    justify-content: center;
+    flex: 1;
     transition: 0.2s;
 }
 
 .nav-item i {
-    font-size: 1.7rem; /* Icon ဆိုဒ်ကို ပိုကြီးလိုက်သည် */
-    margin-bottom: 6px;
+    font-size: 1.4rem; /* Standard Size */
+    margin-bottom: 4px;
 }
 
 .nav-item span {
-    font-size: 0.9rem; /* စာသားဆိုဒ်ကို ပိုကြီးလိုက်သည် */
-    font-weight: bold;
+    font-size: 0.75rem; /* စာသားကို သပ်သပ်ရပ်ရပ် သေးသေးလေးထားသည် */
+    font-weight: 500;
 }
 
-/* နှိပ်လိုက်ရင် အရောင်ပြောင်းရန် */
-.nav-item:active {
-    color: var(--primary-color);
-}
-
-/* လက်ရှိရောက်နေတဲ့ page အရောင်အတွက် (Optional) */
+/* လက်ရှိရောက်နေတဲ့ page အရောင် */
 .nav-item.active {
     color: var(--primary-color);
+}
+
+/* နှိပ်လိုက်ရင် Feedback ပေးရန် */
+.nav-item:active i {
+    transform: scale(0.9);
 }
 
