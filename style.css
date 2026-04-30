@@ -1,0 +1,81 @@
+/* style.css */
+:root {
+    --primary-color: #4834d4;    /* ပိုတောက်တဲ့ ခရမ်းပြာ (Professional ဖြစ်စေတယ်) */
+    --primary-dark: #30336b;
+    --bg-light: #f4f7f6;        /* Body ကို အဖြူမဟုတ်ဘဲ မီးခိုးစိမ်းနုဘက် သွားထားတယ် */
+    --text-white: #ffffff;
+    --nav-active: #4834d4;
+    --nav-dim: #95afc0;         /* မနှိပ်ထားတဲ့ icon တွေကို ပိုမြင်သာတဲ့အရောင် သုံးထားတယ် */
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Pyidaungsu', sans-serif;
+    margin: 0;
+}
+
+/* Header ကို တိုင်းရင်းဆေး App ပုံစံ Solid Color နဲ့ အနားသတ် Shadow ပါအောင် ပြင်ခြင်း */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    padding: 18px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 0 0 15px 15px; /* အောက်နားလေးကို ဝိုင်းလိုက်ရင် ပို Modern ဖြစ်တယ် */
+}
+
+.top-bar {
+    color: var(--text-white);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Bottom Nav - Icon တွေကို Contrast မြှင့်ပြီး စာလုံးကို Bold တင်ခြင်း */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    border-top: 2px solid #eeeeee;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+}
+
+.nav-item {
+    color: var(--nav-dim);
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.nav-item i {
+    font-size: 1.6rem; /* အရွယ်အစား ပိုကြီးလာမယ် */
+    display: block;
+    margin-bottom: 2px;
+}
+
+.nav-item span {
+    font-size: 0.85rem;
+    font-weight: 600; /* စာလုံးကို ပိုထင်ရှားအောင် လုပ်ထားတယ် */
+}
+
+/* Active ဖြစ်တဲ့ Item ကို အရောင်တောက်တောက်နဲ့ Highlight ပြခြင်း */
+.nav-item.active {
+    color: var(--nav-active);
+    transform: translateY(-3px); /* နှိပ်ထားတဲ့ icon လေး ကြွတက်နေတဲ့ပုံစံ */
+}
+
+/* Card Section ကို တိုင်းရင်းဆေး App တွေလို သပ်သပ်ရပ်ရပ် ခွဲခြားထားခြင်း */
+.card {
+    background: #ffffff;
+    margin: 15px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+}
+
