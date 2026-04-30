@@ -1,6 +1,6 @@
+/* script.js */
 const GITHUB_RAW = "https://raw.githubusercontent.com/allpeacein23-dotcom/Vinaya/main/";
 
-// ဘိက္ခုနီအတွက် Category Header များ
 const niCategoryMap = {
     'parajika.json': 'ပါရာဇိက (၈) ပါး',
     'sanghadisesa.json': 'သံဃာဒိသိသ် (၁၇) ပါး',
@@ -11,7 +11,6 @@ const niCategoryMap = {
     'samatha.json': 'အဓိကရဏသမထ (၇) ပါး'
 };
 
-// ဘိက္ခုအတွက် Category Header များ
 const bhikkhuCategoryMap = {
     'parajika.json': 'ပါရာဇိက (၄) ပါး',
     'sanghadisesa.json': 'သံဃာဒိသိသ် (၁၃) ပါး',
@@ -26,49 +25,54 @@ const bhikkhuCategoryMap = {
 async function loadCategory(type) {
     const main = document.getElementById('content-area');
     const header = document.getElementById('main-header');
+    main.innerHTML = '<div style="text-align:center; padding:50px;">ဒေတာများ ဆွဲယူနေသည်...</div>';
     
-    main.innerHTML = '<div style="text-align:center; padding:50px;">ခေတ္တစောင့်ပါ...</div>';
-    
-    let folder = "";
-    let map = {};
-
-    // Folder Path သတ်မှတ်ခြင်း
-    if (type === 'bhikkhuni') {
-        header.innerText = 'ဘိက္ခုနီဝိနည်းများ';
-        folder = 'bhukkhuni'; // သင့် Repo အတိုင်း u ပါသည်
-        map = niCategoryMap;
-    } else {
-        header.innerText = 'ရဟန်းဝိနည်းများ';
-        folder = 'bhikkhu';
-        map = bhikkhuCategoryMap;
-    }
+    let folder = (type === 'bhikkhuni') ? 'bhukkhuni' : 'bhikkhu';
+    let map = (type === 'bhikkhuni') ? niCategoryMap : bhikkhuCategoryMap;
+    header.innerText = (type === 'bhikkhuni') ? 'ဘိက္ခုနီဝိနည်းများ' : 'ရဟန်းဝိနည်းများ';
 
     const files = Object.keys(map);
     let fullHtml = '';
 
     try {
         for (const file of files) {
-            const response = await fetch(`${GITHUB_RAW}${folder}/${file}`);
-            if (response.ok) {
-                const data = await response.json();
-                
-                // Header အသေး (Category Name)
+            const res = await fetch(`${GITHUB_RAW}${folder}/${file}`);
+            if (res.ok) {
+                const data = await res.json();
                 fullHtml += `<div class="category-header">${map[file]}</div>`;
                 
-                data.forEach(item => {
+                data.forEach((item, index) => {
+                    const uniqueId = `${file.replace('.json','')}-${index}`;
                     fullHtml += `
-                        <div class="card">
-                            <h3>${item.id}. ${item.title_mm}</h3>
-                            <p>${item.description}</p>
+                        <div class="card" onclick="toggleDetails('${uniqueId}')">
+                            <div class="card-header">
+                                <h3>${item.title_mm}</h3>
+                                <i class="fas fa-chevron-down arrow-icon" id="arrow-${uniqueId}"></i>
+                            </div>
+                            <div class="card-details" id="${uniqueId}">
+                                <hr style="border:0; border-top:1px solid #eee; margin:10px 0;">
+                                <p>${item.description}</p>
+                            </div>
                         </div>`;
                 });
             }
         }
-        main.innerHTML = fullHtml || '<p style="text-align:center;">ဒေတာမရှိပါ။</p>';
+        main.innerHTML = fullHtml || '<p>ဒေတာမရှိပါ။</p>';
     } catch (e) {
-        main.innerHTML = '<p style="text-align:center; color:red;">Network Error! GitHub Link ကို စစ်ဆေးပါ။</p>';
+        main.innerHTML = '<p style="color:red; text-align:center;">Network Error!</p>';
     }
 }
 
-// ပထမဆုံးဝင်ချင်း ဘိက္ခုကို အလိုအလျောက်ပြရန်
+function toggleDetails(id) {
+    const el = document.getElementById(id);
+    const arrow = document.getElementById(`arrow-${id}`);
+    if (el.style.display === "block") {
+        el.style.display = "none";
+        arrow.style.transform = "rotate(0deg)";
+    } else {
+        el.style.display = "block";
+        arrow.style.transform = "rotate(180deg)";
+    }
+}
+
 window.onload = () => loadCategory('bhikkhu');
