@@ -99,6 +99,7 @@ header {
     transition: 0.3s;
 }
 
+/* Bottom Navigation (ပိုကြီးပြီး နှိပ်ရလွယ်ကူအောင် ပြင်ထားသည်) */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -106,8 +107,10 @@ header {
     background: #ffffff;
     display: flex;
     justify-content: space-around;
-    padding: 12px 0;
+    padding: 15px 0; /* အပေါ်အောက် အကွာအဝေး ပိုချဲ့ထားသည် */
     border-top: 1px solid #cfd8dc;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 2000;
 }
 
 .nav-item {
@@ -116,6 +119,27 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 0.75rem;
+    width: 25%; /* နေရာအပြည့်ယူရန် */
+    transition: 0.2s;
+}
+
+.nav-item i {
+    font-size: 1.7rem; /* Icon ဆိုဒ်ကို ပိုကြီးလိုက်သည် */
+    margin-bottom: 6px;
+}
+
+.nav-item span {
+    font-size: 0.9rem; /* စာသားဆိုဒ်ကို ပိုကြီးလိုက်သည် */
+    font-weight: bold;
+}
+
+/* နှိပ်လိုက်ရင် အရောင်ပြောင်းရန် */
+.nav-item:active {
+    color: var(--primary-color);
+}
+
+/* လက်ရှိရောက်နေတဲ့ page အရောင်အတွက် (Optional) */
+.nav-item.active {
+    color: var(--primary-color);
 }
 
