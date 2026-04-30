@@ -1,6 +1,6 @@
 /* style.css */
 :root {
-    --primary-color: #455a64; /* Blue Gray အခြေခံ */
+    --primary-color: #455a64;
     --accent-color: #607d8b;
     --bg-color: #eceff1;
     --text-main: #263238;
@@ -10,67 +10,85 @@
 body {
     font-family: 'Pyidaungsu', -apple-system, sans-serif;
     margin: 0;
-    padding-bottom: 80px; /* Bottom Nav အတွက် နေရာ */
+    padding-bottom: 80px;
     background-color: var(--bg-color);
-    color: var(--text-main);
 }
 
-/* Header */
-.top-bar {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 18px 15px;
-    text-align: center;
-    font-size: 1.25rem;
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+/* Header ကို အဝိုင်းဆန်ဆန် ပြင်ထားသည် */
+header {
+    padding: 10px;
+    background-color: var(--bg-color);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* Content Area */
-#content-area {
-    padding: 5px;
+.top-bar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px; /* အနားလုံးစေရန် */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* Category Sub-Header */
+/* Category Sub-Header (ပါရာဇိက စသည်) */
 .category-header {
     background-color: #cfd8dc;
     color: var(--primary-color);
-    padding: 10px 15px;
-    margin: 15px 10px 5px 10px;
-    border-radius: 6px;
+    padding: 10px 20px;
+    margin: 20px 10px 10px 10px;
+    border-radius: 25px; /* ဆေးတောင့်ပုံစံ အဝိုင်း */
     font-weight: bold;
     font-size: 0.9rem;
-    text-align: left;
-    border-left: 4px solid var(--primary-color);
+    text-align: center;
+    border: 1px solid #b0bec5;
 }
 
-/* Cards */
+/* Clickable Cards */
 .card {
     background: var(--card-bg);
-    margin: 10px;
-    padding: 16px;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin: 12px;
+    padding: 18px;
+    border-radius: 15px; /* Card အနားလုံး */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     border: 1px solid #e0e0e0;
+    transition: 0.2s;
 }
 
-.card h3 {
-    margin: 0 0 8px 0;
-    color: var(--primary-color);
-    font-size: 1.1rem;
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
 }
 
-.card p {
+.card-header h3 {
     margin: 0;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    color: var(--primary-color);
+}
+
+.card-details {
+    display: none;
+    padding-top: 15px;
+}
+
+.card-details p {
+    margin: 0;
+    line-height: 1.7;
     color: #546e7a;
     font-size: 0.95rem;
 }
 
-/* Bottom Navigation */
+.arrow-icon {
+    color: #90a4ae;
+    transition: 0.3s;
+}
+
+/* Bottom Nav */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -80,8 +98,6 @@ body {
     justify-content: space-around;
     padding: 12px 0;
     border-top: 1px solid #cfd8dc;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-    z-index: 1000;
 }
 
 .nav-item {
@@ -91,27 +107,6 @@ body {
     flex-direction: column;
     align-items: center;
     font-size: 0.75rem;
-    transition: 0.3s;
 }
 
-.nav-item i {
-    font-size: 1.4rem;
-    margin-bottom: 4px;
-}
-
-.nav-item:active {
-    color: var(--primary-color);
-    transform: scale(0.9);
-}
-
-/* Loading State */
-.loading-text {
-    text-align: center;
-    padding: 50px;
-    color: var(--accent-color);
-}
-
-/* Procedure Specific (For arpat.js) */
-.procedure-card {
-    border-left: 5px solid #ffb300 !important;
-}
+.nav-item i { font-size: 1.4rem; margin-bottom: 4px; }
