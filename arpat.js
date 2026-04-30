@@ -1,4 +1,4 @@
-// ၁။ အာပတ်ဆိုင်ရာ Data များ
+/* arpat.js */
 const arpatData = [
     {
         title: "ပါရာဇိကအာပတ်",
@@ -32,71 +32,51 @@ const arpatData = [
     }
 ];
 
-// ၂။ CSS Style များကို JavaScript မှတစ်ဆင့် ထည့်သွင်းခြင်း
-const style = document.createElement('style');
-style.innerHTML = `
-    body { font-family: 'Pyidaungsu', sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-    .container { max-width: 600px; width: 100%; }
-    .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 8px solid; transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
-    .title { font-size: 1.4rem; font-weight: bold; margin-bottom: 5px; color: #333; }
-    .subtitle { font-size: 0.9rem; color: #666; margin-bottom: 15px; font-style: italic; }
-    .section-title { font-weight: bold; color: #555; margin-top: 10px; display: block; }
-    .content-text { font-size: 1rem; color: #444; margin-bottom: 8px; display: block; }
-    .procedure-box { background: #f9f9f9; border: 1px dashed #ccc; padding: 15px; border-radius: 8px; margin-top: 15px; }
-    .step { margin-bottom: 10px; font-size: 0.95rem; }
-    .role { font-weight: bold; color: #1a73e8; }
-    header { text-align: center; margin-bottom: 30px; }
-    header h1 { color: #8e24aa; }
-`;
-document.head.appendChild(style);
-
-// ၃။ UI ကို Render လုပ်မည့် Function
-function renderApp() {
-    const body = document.body;
+function renderArpat() {
+    const main = document.getElementById('content-area');
+    const header = document.getElementById('main-header');
+    header.innerText = 'အာပတ်ဖြေနည်းများ';
     
-    // Header ပိုင်း
-    const header = document.createElement('header');
-    header.innerHTML = `<h1>ဝိနည်းတော်ဆိုင်ရာ အာပတ်များ</h1><p>အာပတ်အမျိုးအစားနှင့် ကုစားပုံလမ်းညွှန်</p>`;
-    body.appendChild(header);
-
-    const container = document.createElement('div');
-    container.className = 'container';
-
-    arpatData.forEach(data => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.style.borderLeftColor = data.color;
-
-        let content = `
-            <div class="title">${data.title}</div>
-            <div class="subtitle">${data.subtitle}</div>
-            <span class="section-title">⚠️ ပြစ်ဒဏ်:</span>
-            <span class="content-text">${data.penalty}</span>
-            <span class="section-title">✅ ကုစားပုံ:</span>
-            <span class="content-text">${data.remedy}</span>
-        `;
-
+    let html = '';
+    arpatData.forEach((data, index) => {
+        const uniqueId = `arpat-new-${index}`;
+        
+        let procedureHtml = '';
         if (data.procedure) {
-            content += `<div class="procedure-box"><strong>ဒေသနာကြားပုံ အဆင့်ဆင့်:</strong><br><br>`;
+            procedureHtml = `<div style="background:#f9f9f9; border:1px dashed #ccc; padding:15px; border-radius:8px; margin-top:15px;">
+                <strong style="display:block; margin-bottom:10px;">ဒေသနာကြားပုံ အဆင့်ဆင့်:</strong>`;
             data.procedure.forEach(step => {
-                content += `
-                    <div class="step">
-                        <span class="role">${step.q}:</span> 
+                procedureHtml += `
+                    <div style="margin-bottom:8px; font-size:0.95rem;">
+                        <span style="font-weight:bold; color:#1a73e8;">${step.q}:</span> 
                         <span>${step.text}</span>
-                    </div>
-                `;
+                    </div>`;
             });
-            content += `</div>`;
+            procedureHtml += `</div>`;
         }
 
-        card.innerHTML = content;
-        container.appendChild(card);
+        html += `
+            <div class="card" onclick="toggleDetails('${uniqueId}')" style="border-left: 8px solid ${data.color};">
+                <div class="card-header">
+                    <div>
+                        <h3 style="margin:0;">${data.title}</h3>
+                        <small style="color:#666; font-style:italic;">${data.subtitle}</small>
+                    </div>
+                    <i class="fas fa-chevron-down arrow-icon" id="arrow-${uniqueId}"></i>
+                </div>
+                <div class="card-details" id="${uniqueId}">
+                    <hr style="border:0; border-top:1px solid #eee; margin:15px 0;">
+                    <div style="margin-bottom:10px;">
+                        <span style="font-weight:bold; color:#555; display:block;">⚠️ ပြစ်ဒဏ်:</span>
+                        <span style="color:#444;">${data.penalty}</span>
+                    </div>
+                    <div style="margin-bottom:10px;">
+                        <span style="font-weight:bold; color:#555; display:block;">✅ ကုစားပုံ:</span>
+                        <span style="color:#444;">${data.remedy}</span>
+                    </div>
+                    ${procedureHtml}
+                </div>
+            </div>`;
     });
-
-    body.appendChild(container);
+    main.innerHTML = html;
 }
-
-// Page Load ဖြစ်တာနဲ့ Render လုပ်မည်
-window.onload = renderApp;
-
