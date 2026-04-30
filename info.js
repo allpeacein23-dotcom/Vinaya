@@ -2,8 +2,6 @@
 const developerInfo = {
     details: {
         appName: "ဝိနည်းတော်များနှင့် အာပတ်ဖြေနည်း လမ်းညွှန်",
-        developer: "Partner Developer @ APKPure",
-        version: "1.0.0",
         purpose: "ရဟန်းသံဃာတော်များ ဝိနည်းကံပြုရာတွင်လည်းကောင်း၊ အာပတ်များအကြောင်းကို လေ့လာရာတွင်လည်းကောင်း၊ နည်းပညာအကူအညီဖြင့် လက်တစ်ကမ်းတွင် အလွယ်တကူ ကြည့်ရှုနိုင်စေရန် ရည်ရွယ်ပါသည်။",
         benefits: [
             "ဝိနည်းဒေသနာတော်များကို Digital Reference အဖြစ် အချိန်မရွေး ဖတ်ရှုနိုင်ခြင်း။",
@@ -55,10 +53,6 @@ function renderInfo() {
                     <ul style="margin:5px 0; padding-left:20px; font-size:0.9rem;">
                         ${benefitHtml}
                     </ul>
-                </div>
-                <div style="font-size:0.8rem; color:#90a4ae; margin-top:10px;">
-                    Version: ${info.version} | Dev: ${info.developer}
-                </div>
             </div>
         </div>
 
